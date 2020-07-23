@@ -1,0 +1,76 @@
+*{
+	margin: 0;
+}
+body{
+	background-color: #E5E8E8;
+}
+.center{
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 60px;
+	font-size: 1.75em;
+	font-family: sans-serif;
+}
+.row{
+	width:100%;
+}
+
+p{
+	background-color: #99A3A4 ;
+	border: 1px solid black;
+	box-sizing: border-box;
+	padding: 10px;
+	position: relative;
+	padding-top: 35px;
+}
+
+div{
+	padding: 5px;
+	float: left;
+	box-sizing: border-box;	
+	}
+b{
+	
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 5px;
+	border: 1px solid black;
+	font-size:1.25em;
+	font-weight: 500;
+	font-family: sans-serif;
+}
+.Topic1{
+	background-color: #F08880;
+}
+.Topic2{
+	background-color: #C0392B;
+	color: white;
+}
+.Topic3{
+	background-color: #F7DC6F;
+}
+span{
+	font-family: sans-serif;
+}
+/*----------------- Desktop -----------------------*/
+@media(min-width: 992px){
+	.a{
+		width: 33.33%;
+	}
+}
+/*----------------- Tablets -----------------------*/
+@media(min-width: 768px) and (max-width: 991px){
+	.a{
+		width: 50%;
+	}
+	.b{
+		width: 100%;
+	}
+}
+/*----------------- Mobiles -----------------------*/
+@media(max-width: 767px){
+	.a{
+		width: 100%;
+	}
+}
