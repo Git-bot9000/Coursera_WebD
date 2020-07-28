@@ -9,8 +9,8 @@ const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => (val) && (val.length >= len);
 
 class CommentForm extends Component{
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state={
 			isModalOpen: false
 		}
@@ -22,10 +22,9 @@ class CommentForm extends Component{
 		});
 	}
 
-	handleSubmit = (values) => {
-		console.log("Curr state: "+ JSON.stringify(values));
-		alert("Curr state: "+ JSON.stringify(values));
+	handleSubmit = (values) => {	
 		this.toggleModal();
+		this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
 	}
 
 	render(){
@@ -108,7 +107,7 @@ function RenderDish({dish}){
 }
 
 
-function RenderComments({comments})
+function RenderComments({comments, addComment, dishId})
 {
 	if(comments==null)
 	{
@@ -132,13 +131,13 @@ function RenderComments({comments})
 				<ul className="list-unstyled">
 					{enterComments}
 				</ul>
-				<CommentForm /> <br />
+				<CommentForm dishId={dishId} addComment={addComment} /> <br />
 			</div>
 		);
 	}
 }
 
-function Detail({dish, comments}){
+function Detail({dish, comments, addComment}){
 
 	let comment;
 	if(dish!=null)
@@ -170,7 +169,9 @@ function Detail({dish, comments}){
 					<RenderDish dish={dish} />
 				</div>
 				<div  className="col-12 col-md-5 m-1">
-					<RenderComments comments={comment} />
+					<RenderComments comments={comment}
+					addComment={addComment}
+					dishId={dish.id} />
 				</div>
 			</div>
 		</div>
