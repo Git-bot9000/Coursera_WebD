@@ -25,6 +25,7 @@ class CommentForm extends Component{
 	handleSubmit = (values) => {
 		console.log("Curr state: "+ JSON.stringify(values));
 		alert("Curr state: "+ JSON.stringify(values));
+		this.toggleModal();
 	}
 
 	render(){
@@ -62,7 +63,7 @@ class CommentForm extends Component{
                                 }} />
                          	<Errors
                                 className="text-danger"
-                                model=".yourname"
+                                model=".author"
                                 show="touched"
                                 messages={{                                
                                     minLength: 'Must be atleast 3 characters',
