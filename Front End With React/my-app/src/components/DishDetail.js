@@ -4,6 +4,7 @@ import { Card, CardImg, CardText, CardBody,
 	Modal, ModalHeader, ModalBody, Col, Row, Label } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import {Loading} from './LoadingComponent';
 
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => (val) && (val.length >= len);
@@ -137,8 +138,26 @@ function RenderComments({comments, addComment, dishId})
 	}
 }
 
-function Detail({dish, comments, addComment}){
+function Detail({dish, comments, addComment, isLoading, errMess}){
 
+	if(isLoading){
+		return(
+			<div className="container">
+				<div className="row">
+					<Loading />
+				</div>
+			</div>
+		);
+	}
+	if(errMess){
+		return(
+			<div className="container">
+				<div className="row">
+					<h4>{errMess}</h4>
+				</div>
+			</div>
+		);
+	}
 	let comment;
 	if(dish!=null)
 	{
